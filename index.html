@@ -195,7 +195,7 @@
               <div class="publication-links">
             <!-- ArXiv abstract Link -->
             <span class="link-block">
-              <a href="https://arxiv.org/abs/2406.18361" target="_blank"
+              <a href="#" 
                 class="external-link button is-normal is-rounded is-dark">
                 <span class="icon">
                   <i class="ai ai-arxiv"></i>
@@ -391,7 +391,7 @@
           <p class="is-size-5" style="text-align: justify;">Replaying actions collected from one robot in the other robot results in different trajectories.</p>
           <h4 class="title is-5" style="text-align: center;"> 🤔 Why?: Actions are defined as underlying robot control command</h4>
           <img src="static/images/motivation.png" alt="Different robots require different actions to achieve the same motion" style="width: 100%; max-width: 1100px;" />
-          <p class="is-size-6" style="text-align: justify;">Different controller implementations across embodiments leads to <b>different control commands for the same motion.</b> The robot motion is also affected by hardware wear and tear for the same control command.</p>
+          <p class="is-size-6" style="text-align: justify;">Different controller implementations across embodiments lead to <b>different control commands for the same motion.</b> The robot motion is also affected by hardware wear and tear for the same control command.</p>
           <h4 class="title is-5" style="text-align: center; color: #e53935;">❗ This significantly hurts learning &amp; deployment across different robots.</h4>
         </div>
 
@@ -416,7 +416,7 @@
               </p> -->
               <h4 class="title is-5" style="text-align: left; white-space: nowrap; margin-top: 3rem;">🔑 Convert the predicted Cartesian state delta to robot-specific control commands</h4>
               <img src="static/images/space.png" alt="SPACE: VLA model with Action Adapter converting Cartesian state delta into robot-specific control commands" style="width: 100%; max-width: 1100px;" />
-              <p class="is-size-6" style="text-align: justify;">However, executing the predicted displacement on a target robot is <b>non-trivial</b>, since the resulting motion depends on the robot's controller and dynamics. <b>Action Adapter</b> learns a per-robot mapping from a Cartesian state delta to the control command that realizes it using a linear model from calibration dataset \( \mathcal{D}_{\mathrm{cal}} \) consists of only 10 trajectories:</p>
+              <p class="is-size-6" style="text-align: justify;">However, executing the predicted displacement on a target robot is <b>non-trivial</b>, since the resulting motion depends on the robot's controller and dynamics. <b>Action Adapter</b> learns a per-robot mapping from a Cartesian state delta to the control command that realizes it using a linear model from calibration dataset \( \mathcal{D}_{\mathrm{cal}} \) consisting of only 10 trajectories:</p>
               <div class="is-flex is-justify-content-center is-align-items-center" style="gap: 3rem; flex-wrap: wrap;">
                 <span>\( \min_{W_0, b_0} \sum_{(\Delta p, u) \in \mathcal{D}_{\mathrm{cal}}} \left\| W_0 \Delta p + b_0 - u \right\|_2^2. \)</span>
               </div>
@@ -495,26 +495,26 @@
           <h2 class="title is-2" style="background: linear-gradient(to right,  indigo, indigo, skyblue, indigo, indigo); -webkit-background-clip: text; -webkit-text-fill-color: transparent;line-height: 1.5;">
             Experiments</h2>
           <div style="background: #f3f0fa; border-left: 5px solid indigo; border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; text-align: left;">
-            <p class="is-size-6" style="margin-bottom: 0;">We compare SPACE against policy predicting control commands, referred to as <b>Control command</b>, which is common practice in policy learning.</p>
+            <p class="is-size-6" style="margin-bottom: 0;">We compare SPACE against policy predicting control commands, referred to as <b>Control command</b>, which is common practice in policy learning. The <a href="https://arxiv.org/abs/2504.16054" target="_blank">\( \pi_{0.5} \) model</a> is used for all.</p>
           </div>
           <h3 class="title is-4" style="text-align: left; color: black;">Q1. Does SPACE improve cross-embodiment learning?</h3>
           <img src="static/images/figure_cross_embodiment_environment.png" alt="Cross-embodiment experiment setup: training on UR5+FR3, UR5 only, and Human+FR3, executed on FR3" style="width: 100%; max-width: 1100px;" />
-          <p class="is-size-6" style="text-align: justify;">To test the effectiveness of <b>SPACE</b>, we experiment co-training Franka Research 3 (FR3) data with UR5 data or <a href="https://fastumi.com/" target="_blank">UMI</a> hand-held gripper data. We hypothesize that co-training using control command will suffer from discrepancies between different embodiments.</p>
+          <p class="is-size-6" style="text-align: justify;">To test the effectiveness of SPACE, we experiment with co-training Franka Research 3 (FR3) data with UR5 data or <a href="https://fastumi.com/" target="_blank">UMI</a> hand-held gripper data. We hypothesize that co-training using control command will suffer from discrepancies between different embodiments.</p>
           <img src="static/images/cotraining_result.png" alt="Co-training results: SPACE outperforms control-command policy across tasks" style="width: 100%; max-width: 1100px;" />
-          <p class="is-size-6" style="text-align: justify;"><b>SPACE boosts co-training performance</b> across UR5 and FR3 robot, and UMI human hand-held gripper and FR3 robot, while conventional policy of predicting control commands displays relatively low performances. It even enables zero-shot execution of policy learned solely from UR5 data in FR3.</p>
+          <p class="is-size-6" style="text-align: justify;"><b>SPACE boosts co-training performance</b> across UR5 and FR3 robots, and UMI human hand-held gripper and FR3 robot, while conventional policy of predicting control commands displays relatively low performances. It even enables zero-shot execution of policy learned solely from UR5 data in FR3.</p>
           <!-- <div style="background: #f3f0fa; border-left: 5px solid indigo; border-radius: 6px; padding: 1rem 1.25rem; margin-top: 1.5rem; text-align: left;">
             <p class="is-size-6" style="margin-bottom: 0;"><b>💡 Summary:</b> .</p>
           </div> -->
           <h3 class="title is-4" style="text-align: left; color: black; margin-top: 3rem;">Q2. Does SPACE improve cross-hardware learning?</h3>
-          <p class="is-size-6" style="text-align: justify;">Even though the embodiment and controller implementation are the same, <b>different hardware units exhibit discrepancies in dynamics</b> due to wear, manufacturing variability.</p>
+          <p class="is-size-6" style="text-align: justify;">Even though the embodiment and controller implementation are the same, <b>different hardware units exhibit discrepancies in dynamics</b> due to wear and manufacturing variability.</p>
           <img src="static/images/different_hardware.png" alt="Different hardware units of the same robot exhibit discrepancies in dynamics" style="width: 100%; max-width: 1100px;" />
-          <h4 class="subtitle is-5 has-text-centered has-text-weight-bold" style="font-family: 'Times New Roman', Times, serif;">Execution in different hardware from training</h4>
+          <h4 class="subtitle is-5 has-text-centered has-text-weight-bold" style="font-family: 'Times New Roman', Times, serif; color: black;">Execution in different hardware from training</h4>
           <p class="is-size-6" style="text-align: justify;">When deploying policy in robot not used during data collection, control command policy suffers from degradation due to subtle dynamics difference, while SPACE stays robust.</p>
           <img src="static/images/droid_success_rate.png" alt="DROID success rate: SPACE vs. control-command and other action-space baselines" style="width: 100%; max-width: 1100px;" />
-          <h4 class="subtitle is-5 has-text-centered has-text-weight-bold" style="font-family: 'Times New Roman', Times, serif;">DROID success rate</h4>
+          <h4 class="subtitle is-5 has-text-centered has-text-weight-bold" style="font-family: 'Times New Roman', Times, serif; color: black;">DROID success rate</h4>
           <p class="is-size-6" style="text-align: justify;"><b>SPACE achieves the best performance when learning from <a href="https://droid-dataset.github.io/" target="_blank">DROID</a></b> data collected from multiple hardware units of the FR3 robot. This is because other control commands are all specific to the data collection robot’s dynamics, which are inconsistent across different hardware units.</p>
           <h3 class="title is-4" style="text-align: left; color: black; margin-top: 3rem;">Q3. Does SPACE remain robust under a dynamics shift from training time?</h3>
-          <p class="is-size-6" style="text-align: justify;"><b>SPACE can also adapt to the changes in environment dynamics from training.</b> We collect training data using empty box and put heavy metals during inference. In this setup, control command policy is unable to lift the heavy box and success rate drops to 0%. Meanwhile, SPACE adapts control command using Action Adapter to lift the heavy box and achieve 92% success rate.</p>
+          <p class="is-size-6" style="text-align: justify;"><b>SPACE can also adapt to the changes in environment dynamics from training.</b> We collect training data using an empty box and put heavy metals during inference. In this setup, control command policy is unable to lift the heavy box and success rate drops to 0%. Meanwhile, SPACE adapts control command using Action Adapter to lift the heavy box and achieves 92% success rate.</p>
           <div class="is-flex is-justify-content-center is-align-items-center" style="gap: 0.75rem; margin: 1.5rem 0;">
             <div class="has-text-centered">
               <p class="is-size-7 has-text-weight-semibold has-text-grey">Empty box (train)</p>
@@ -536,26 +536,28 @@
               </video>
             </div>
             <div class="has-text-centered">
-              <p class="is-size-7 has-text-weight-semibold has-text-grey">Vanilla policy</p>
+              <p class="is-size-7 has-text-weight-semibold has-text-grey">Control command</p>
               <video autoplay controls muted loop playsinline style="height: 200px; width: auto; max-width: 100%;">
                 <source src="static/videos/heavy_policy.mp4" type="video/mp4">
               </video>
             </div>
           </div>
-          <h4 class="subtitle is-5 has-text-centered has-text-weight-bold" style="font-family: 'Times New Roman', Times, serif;">Object weight change during deployment</h4>
-          <p class="is-size-6" style="text-align: justify;">SPACE can execute the policy under different control Hz. For example, we accelerate policy execution by increasing control hz to 30Hz, from 15Hz used during data collection. Meanwhile, policy predicting control commands degrades at 30 Hz due to discrepancy from training time.</p>
+          <h4 class="subtitle is-5 has-text-centered has-text-weight-bold" style="font-family: 'Times New Roman', Times, serif; color: black;">Object weight change during deployment</h4>
+          <p class="is-size-6" style="text-align: justify;"><b>SPACE can execute the policy under different control Hz.</b> For example, we accelerate policy execution by increasing control hz to 30Hz, from 15Hz used during data collection. Meanwhile, policy predicting control commands degrades at 30 Hz due to discrepancy from training time.</p>
           <div class="is-flex is-justify-content-center is-align-items-center" style="gap: 1.5rem; flex-wrap: nowrap;">
             <div class="has-text-centered" style="flex: 0 0 52%; max-width: 52%;">
               <img src="static/images/control_hz.png" alt="SPACE executes reliably at higher control Hz while control-command policy degrades" style="width: 100%; height: auto;" />
-              <h4 class="subtitle is-5 has-text-centered has-text-weight-bold" style="margin-top: 0.5rem; margin-bottom: 0; transform: translateY(-1.5rem); font-family: 'Times New Roman', Times, serif;">Control Hz change during deployment<br>(success rate &amp; execution time)</h4>
+              <h4 class="subtitle is-5 has-text-centered has-text-weight-bold" style="margin-top: 0.5rem; margin-bottom: 0; transform: translateY(-1.5rem); font-family: 'Times New Roman', Times, serif; color: black; font-size: 1.1rem;">Control Hz change during deployment<br>(success rate &amp; execution time)</h4>
             </div>
             <div class="has-text-centered" style="flex: 0 0 43%; max-width: 43%;">
               <img src="static/images/gain.png" alt="Action Adapter gain adapts to the control Hz change" style="width: 100%; height: auto;" />
-              <h4 class="subtitle is-5 has-text-centered has-text-weight-bold" style="margin-top: 0.5rem; margin-bottom: 0; transform: translateY(1.5rem); font-family: 'Times New Roman', Times, serif;">Gain change during deployment (success rate)</h4>
+              <h4 class="subtitle is-5 has-text-centered has-text-weight-bold" style="margin-top: 0.5rem; margin-bottom: 0; transform: translateY(1.5rem); font-family: 'Times New Roman', Times, serif; color: black; font-size: 1.1rem;">Gain change during deployment<br>(success rate)</h4>
             </div>
           </div>
-          <p class="is-size-6" style="text-align: justify;">Also, it can adapt to different controller gains from training time. Multiplying proportional gains (Kp) by 0.5x or 1.5x significantly drops success rates for control command policy while SPACE remains robust.</p>
-
+          <p class="is-size-6" style="text-align: justify;"><b>SPACE can also execute under different controller gains from training time.</b> Multiplying proportional gains (Kp) by 0.5x or 1.5x significantly drops success rates for control command policy while SPACE remains robust.</p>
+          <div style="background: #f3f0fa; border-left: 5px solid indigo; border-radius: 6px; padding: 1rem 1.25rem; margin-top: 1.5rem; text-align: left;">
+            <p class="is-size-6" style="margin-bottom: 0;"><b>💡 Takeaway:</b> By predicting dynamics-agnostic <b>Cartesian state deltas</b> for policy and adaptively converting them to robot-specific control commands, <b>SPACE</b> improves learning from <b>different embodiments and hardware</b>, and remains robust under <b>varying dynamics</b> at deployment.</p>
+          </div>
         </div>
       </div>
     </div>
