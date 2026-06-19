@@ -94,7 +94,7 @@
     }
     .hl-arrow {
       position: absolute;
-      top: 45%;
+      top: 47%;
       transform: translateY(-50%);
       z-index: 5;
       cursor: pointer;
@@ -257,70 +257,16 @@
       <!-- <h4 class="subtitle has-text-left"><b>SPACE</b> enables learning and deployment across heterogeneous robots and can adapt to new dynamics at test time, such as increased control Hz and heavy object weights.</h4> -->
       <!-- Tab navigation -->
       <div class="hl-tabs">
-        <button class="hl-tab is-active" data-idx="0">Cross-embodiment (zero-shot)</button>
+        <button class="hl-tab is-active" data-idx="0">Dynamics adaptation (heavy object)</button>
         <button class="hl-tab" data-idx="1">Cross-hardware (DROID)</button>
-        <button class="hl-tab" data-idx="2">Dynamics adaptation (heavy object)</button>
+        <button class="hl-tab" data-idx="2">Cross-embodiment (zero-shot)</button>
       </div>
 
       <div id="highlights-carousel" class="hl-carousel">
         <button class="hl-arrow hl-prev" aria-label="Previous">&#8249;</button>
 
-        <!-- Slide 1: Zero-shot cross-embodiment transfer -->
+        <!-- Slide 1: Heavy object dynamics adaptation -->
         <div class="hl-slide is-active">
-          <div class="hl-row">
-            <div class="hl-cell">
-              <p class="is-size-6 has-text-weight-semibold has-text-grey">Training data</p>
-              <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
-                <source src="static/videos/ur5_train.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="hl-divider"></div>
-            <div class="hl-stack">
-              <div class="hl-cell">
-                <p class="is-size-6 has-text-weight-semibold" style="color: #2e7d32;">SPACE (Ours)</p>
-                <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
-                  <source src="static/videos/zero_shot_space.mp4" type="video/mp4">
-                </video>
-              </div>
-              <div class="hl-cell">
-                <p class="is-size-6 has-text-weight-semibold has-text-grey">Vanilla policy</p>
-                <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
-                  <source src="static/videos/zero_shot_policy.mp4" type="video/mp4">
-                </video>
-              </div>
-            </div>
-          </div>
-          <h3 class="title is-5 has-text-centered" style="margin-top: 1.25rem;">SPACE enables zero-shot embodiment transfer from UR5 to Franka.</h3>
-        </div>
-
-        <!-- Slide 2: Multi-hardware learning from DROID -->
-        <div class="hl-slide">
-          <div class="hl-row">
-            <div class="hl-cell">
-              <p class="is-size-6 has-text-weight-semibold has-text-grey">Training data</p>
-              <img src="static/images/droid_image.png" alt="DROID dataset: demonstrations across many labs and hardware units" style="height: 360px; width: auto; max-width: 100%;" />
-            </div>
-            <div class="hl-divider"></div>
-            <div class="hl-stack">
-              <div class="hl-cell">
-                <p class="is-size-6 has-text-weight-semibold" style="color: #2e7d32;">SPACE (Ours)</p>
-                <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
-                  <source src="static/videos/droid_space.mp4" type="video/mp4">
-                </video>
-              </div>
-              <div class="hl-cell">
-                <p class="is-size-6 has-text-weight-semibold has-text-grey">Vanilla policy</p>
-                <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
-                  <source src="static/videos/droid_policy.mp4" type="video/mp4">
-                </video>
-              </div>
-            </div>
-          </div>
-          <h3 class="title is-5 has-text-centered" style="margin-top: 1.25rem;">SPACE improves learning from <a href="https://droid-dataset.github.io/" target="_blank">DROID</a> data, which is collected across multiple robots.</h3>
-        </div>
-
-        <!-- Slide 3: Heavy object dynamics adaptation -->
-        <div class="hl-slide">
           <div class="is-flex is-justify-content-center" style="gap: 1.5rem;">
             <div class="hl-cell">
               <p class="is-size-6 has-text-weight-semibold has-text-grey">Empty box (train)</p>
@@ -362,7 +308,61 @@
               </video>
             </div>
           </div>
-          <h3 class="title is-5 has-text-centered" style="margin-top: 1.25rem;">SPACE adapts to different execution dynamics such as object weights.</h3>
+          <h3 class="title is-5 has-text-centered" style="margin-top: 1.25rem;">SPACE enables adapting to different execution dynamics such as object weights.</h3>
+        </div>
+
+        <!-- Slide 2: Multi-hardware learning from DROID -->
+        <div class="hl-slide">
+          <div class="hl-row">
+            <div class="hl-cell">
+              <p class="is-size-6 has-text-weight-semibold has-text-grey">Training data<br>(DROID only)</p>
+              <img src="static/images/droid_image.png" alt="DROID dataset: demonstrations across many labs and hardware units" style="height: 360px; width: auto; max-width: 100%;" />
+            </div>
+            <div class="hl-divider"></div>
+            <div class="hl-stack">
+              <div class="hl-cell">
+                <p class="is-size-6 has-text-weight-semibold" style="color: #2e7d32;">SPACE (Ours)</p>
+                <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
+                  <source src="static/videos/droid_space.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="hl-cell">
+                <p class="is-size-6 has-text-weight-semibold has-text-grey">Vanilla policy</p>
+                <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
+                  <source src="static/videos/droid_policy.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+          <h3 class="title is-5 has-text-centered" style="margin-top: 1.25rem;">SPACE improves learning from <a href="https://droid-dataset.github.io/" target="_blank">DROID</a> data, which is collected across multiple robots.<br><span style="color: #2196F3;">(No additional data was collected in our lab.)</span></h3>
+        </div>
+
+        <!-- Slide 3: Zero-shot cross-embodiment transfer -->
+        <div class="hl-slide">
+          <div class="hl-row">
+            <div class="hl-cell">
+              <p class="is-size-6 has-text-weight-semibold has-text-grey">Training data<br>(UR5 only)</p>
+              <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
+                <source src="static/videos/ur5_train.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="hl-divider"></div>
+            <div class="hl-stack">
+              <div class="hl-cell">
+                <p class="is-size-6 has-text-weight-semibold" style="color: #2e7d32;">SPACE (Ours)</p>
+                <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
+                  <source src="static/videos/zero_shot_space.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="hl-cell">
+                <p class="is-size-6 has-text-weight-semibold has-text-grey">Vanilla policy</p>
+                <video autoplay controls muted loop playsinline style="height: 230px; width: auto; max-width: 100%;">
+                  <source src="static/videos/zero_shot_policy.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+          <h3 class="title is-5 has-text-centered" style="margin-top: 1.25rem;">SPACE enables zero-shot embodiment transfer from UR5 to Franka.</h3>
         </div>
 
         <button class="hl-arrow hl-next" aria-label="Next">&#8250;</button>
@@ -429,7 +429,7 @@
                 \end{aligned} \]
               </p>
               <p class="is-size-6 has-text-left" style="margin-top: 1rem;">
-                🚀 <a href="#highlights" onclick="var t=document.querySelectorAll('.hl-tab'); if(t[2]) t[2].click();"><b>See Action Adapter on the job</b> (adapting control commands to lift unseen heavy object)!</a>
+                🚀 <a href="#highlights" onclick="var t=document.querySelectorAll('.hl-tab'); if(t[0]) t[0].click();"><b>See Action Adapter on the job</b> (adapting control commands to lift unseen heavy object)!</a>
               </p>
             </div>
             <!-- <div class="hero-body">
